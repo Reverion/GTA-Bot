@@ -21,22 +21,21 @@ async def on_ready():
 @bot.command(pass_context=True)
 async def awpc(ctx, member: discord.Member, tr_nick, IGN):
             await bot.delete_message(ctx.message)
+
             #translates and sets the nick
             dict = str.maketrans("qwertyuiopasdfghjklzxcvbnm1234567890QWERTYUIOPASDFGHJKLZXCVBNM", "qʷᵉʳᵗʸᵘⁱᵒᵖᵃˢᵈᶠᵍʰʲᵏˡᶻˣᶜᵛᵇⁿᵐ¹²³⁴⁵⁶⁷⁸⁹⁰Qᵂᴱᴿᵀʸᵁᴵᴼᴾᴬˢᴰᶠᴳᴴᴶᴷᴸᶻˣᶜⱽᴮᴺᴹ")
             value= tr_nick
             nick_nick = value.translate(dict)
             print(nick_nick)
             nickname= "%s (%s)" % (nick_nick, IGN)
+            await bot.change_nickname(member, "%s" % (nickname))
+
+            #does the roles
             pc = discord.utils.get(member.server.roles, name="PC")
             verified = discord.utils.get(member.server.roles, name="Verified")
             agent = discord.utils.get(member.server.roles, name = "Agent")
             unverified = discord.utils.get(member.server.roles, name = "Unverified") 
-
-            await bot.remove_roles(member, unverified)
-            await bot.change_nickname(member, "%s" % (nickname))
-            await bot.add_roles(member, pc) #verified
-            await bot.add_roles(member, verified) #verified
-            await bot.add_roles(member, agent) #Agent
+            await bot.replace_roles(member, pc, verified, agent)
 
             general_chat = discord.utils.get(member.server.channels, name = "general-chat")
 
@@ -53,16 +52,13 @@ async def awps4(ctx, member: discord.Member, tr_nick, IGN):
             nick_nick = value.translate(dict)
             print(nick_nick)
             nickname= "%s (%s)" % (nick_nick, IGN)
+            await bot.change_nickname(member, "%s" % (nickname))
+
             ps4 = discord.utils.get(member.server.roles, name="PS4")
             verified = discord.utils.get(member.server.roles, name="Verified")
             agent = discord.utils.get(member.server.roles, name = "Agent")
             unverified = discord.utils.get(member.server.roles, name = "Unverified")
-
-            await bot.remove_roles(member, unverified)
-            await bot.change_nickname(member, "%s" % (nickname))
-            await bot.add_roles(member, ps4) #verified
-            await bot.add_roles(member, verified) #verified
-            await bot.add_roles(member, agent) #Agent
+            await bot.replace_roles(member, ps4, verified, agent)
 
             general_chat = discord.utils.get(member.server.channels, name = "general-chat")
 
@@ -79,16 +75,14 @@ async def awxb1(ctx, member: discord.Member, tr_nick, IGN):
             nick_nick = value.translate(dict)
             print(nick_nick)
             nickname= "%s (%s)" % (nick_nick, IGN)
+            await bot.change_nickname(member, "%s" % (nickname))
+
             xb1 = discord.utils.get(member.server.roles, name="XB1")
             verified = discord.utils.get(member.server.roles, name="Verified")
             agent = discord.utils.get(member.server.roles, name = "Agent")
             unverified = discord.utils.get(member.server.roles, name = "Unverified")
-
-            await bot.remove_roles(member, unverified)
-            await bot.change_nickname(member, "%s" % (nickname))
-            await bot.add_roles(member, xb1) #verified
-            await bot.add_roles(member, verified) #verified
-            await bot.add_roles(member, agent) #Agent
+            await bot.replace_roles(member, xb1, verified, agent)
+           
 
             general_chat = discord.utils.get(member.server.channels, name = "general-chat")
 
