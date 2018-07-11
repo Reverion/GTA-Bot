@@ -88,4 +88,4 @@ async def awxb1(ctx, member: discord.Member, tr_nick, IGN):
 
             await bot.send_message(general_chat, "Hello {}!, welcome in. Send requests in <#422481305440354306> or in <#422481432951128064> using `@everyone`to find people to play with.\nIf there are any problems, feel free to DM <@389760103462600705> and the message will automatically be forwarded to Staff.".format(member.mention))                                                                
 
-bot.run('NDAwNjkzMTMyNjMyNzg0ODk2.DhbfHQ.7muO_FNdk3S-FE_t0YjdiMQryLI')
+bot.run('')
